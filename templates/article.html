@@ -1,0 +1,127 @@
+{% extends "base.html" %}
+{% block head %}
+    {{ super() }}
+    {% if article.description %}
+        <meta name="description" content="{{ article.description }}" />
+    {% endif %}
+
+    {% for tag in article.tags %}
+        <meta name="tags" content="{{ tag }}" />
+    {% endfor %}
+
+{% endblock %}
+
+{% block content %}
+                    <div class="col-sm-9 blog-main">
+                  <!-- apo edw -->
+                    <div class="blog-post">
+                        <h1 class="blog-post-title"><a href="{{ SITEURL }}/{{ article.url }}" title="Permalink to {{ article.title|striptags }}">{{ article.title }}</a></h1>
+                        <p class="blog-post-meta"><time datetime="{{ article.date.strftime('%d-%m-%Y') }}">{{ article.locale_date }}</time></p>
+                        <p>{{ article.content }}</p><br>
+                        <p class="blog-post-meta">Posted in category: <a href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category }}</a>, by
+                        {% if article.authors %}
+                            {% for author in article.authors %}<a href="{{ SITEURL }}/{{ author.url }}">{{ author }}</a>{% endfor %}
+                        {% endif %}</p>
+                        <!-- article body goes here -->
+                    </div><!-- mexri edw -->
+                    </div>
+                    <div class="col-sm-3 blog-sidebar">
+                <!-- Sidebar > Latest Posts [Y]
+                =============================== -->
+                <div class="sidebar-module sidebar-module-inset">
+                  <h4>Latest posts</h4><hr>
+                  <ul>
+                    {% for article in articles[:5] %}
+                    <li><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title|striptags }}</a></li>
+                    {% endfor %}
+                  </ul>
+                </div><!-- end Sidebar > Latest Posts -->
+
+<!--
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4>Latest posts</h4>
+              </div>
+              <div class="panel-body">
+                <ul>
+                  {% for article in articles[:5] %}
+                  <li><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title|striptags }}</a></li>
+                  {% endfor %}
+                </ul>
+              </div>
+            </div>
+-->
+
+            <!-- Sidebar > Categories [Y]
+            =============================== -->
+            <div class="sidebar-module sidebar-module-inset">
+              <h4>Categories</h4><hr>
+              <ul>
+                {% for cat, _ in categories %}
+                <li {% if cat == category %} class="active" {% endif %}><a href="{{ SITEURL }}/{{ cat.url }}">{{ cat }}</a></li>
+                {% endfor %}
+                </ul>
+            </div><!-- end Sidevar > Categories -->
+<!--
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4>Categories</h4>
+              </div>
+              <div class="panel-body">
+                <ul>
+                {% for cat, _ in categories %}
+                <li {% if cat == category %} class="active" {% endif %}><a href="{{ SITEURL }}/{{ cat.url }}">{{ cat }}</a></li>
+                {% endfor %}
+                </ul>
+              </div>
+            </div>
+-->
+
+            <!-- Sidebar > Tags [Y]
+            =============================== -->
+            <div class="sidebar-module sidebar-module-inset">
+              <h4>Tags</h4><hr>
+              <ul>
+                {% for tag, articles in tags|sort %}
+                <li><a href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a> ({{ articles|count }})</li>
+                {% endfor %}
+                </ul>
+            </div><!-- end Sidevar > Categories -->
+<!--
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4>Tags</h4>
+              </div>
+              <div class="panel-body">
+                <ul>
+                {% for tag, articles in tags|sort %}
+                <li><a href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a> ({{ articles|count }})</li>
+                {% endfor %}
+                </ul>
+              </div>
+            </div>
+-->
+
+            <!-- Sidebar > Archives []
+            ================================ -->
+            <div class="sidebar-module sidebar-module-inset">
+              <h4>Archives</h4><hr>
+              <ol class="list-unstyled">
+                <li><a href="{{ SITEURL }}/archives.html">Archives</a></li>
+              </ol>
+            </div><!-- end Sidebar > Archives -->
+
+            <!-- Sidebar > Social [] TO DO: Make social buttons dynamic
+            ============================================================ -->
+            <div class="sidebar-module sidebar-module-inset">
+              <h4>Ping me!</h4><hr>
+              {% if SOCIAL %}
+              {% for icon, link in SOCIAL %}
+                  <div class="icon"><a href="{{ link }}" target="_blank"><span class="fa fa-{{ icon }} fa-2x"></span></a></div>
+              {% endfor %}
+              {% endif %}
+            </div><!-- end Sidebar >Social -->
+        </div><!-- end Sidebar -->
+
+{% endblock %}
+

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+{% if article %}
+<!--[if lt IE 7]>      <html lang="{{ DEFAULT_LANG }}" class="no-js lt-ie9 lt-ie8 lt-ie7" prefix="og: http://ogp.me/ns#" itemscope itemtype="http://schema.org/BlogPosting"> <![endif]-->
+<!--[if IE 7]>         <html lang="{{ DEFAULT_LANG }}" class="no-js lt-ie9 lt-ie8" prefix="og: http://ogp.me/ns#" itemscope itemtype="http://schema.org/BlogPosting"> <![endif]-->
+<!--[if IE 8]>         <html lang="{{ DEFAULT_LANG }}" class="no-js lt-ie9" prefix="og: http://ogp.me/ns#" itemscope itemtype="http://schema.org/BlogPosting"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="{{ DEFAULT_LANG }}" class="no-js" prefix="og: http://ogp.me/ns#" itemscope itemtype="http://schema.org/BlogPosting"> <!--<![endif]-->
+{% elif page %}
+<!--[if lt IE 7]>      <html lang="{{ DEFAULT_LANG }}" class="no-js lt-ie9 lt-ie8 lt-ie7" prefix="og: http://ogp.me/ns#" itemscope itemtype="http://schema.org/WebPage"> <![endif]-->
+<!--[if IE 7]>         <html lang="{{ DEFAULT_LANG }}" class="no-js lt-ie9 lt-ie8" prefix="og: http://ogp.me/ns#" itemscope itemtype="http://schema.org/WebPage"> <![endif]-->
+<!--[if IE 8]>         <html lang="{{ DEFAULT_LANG }}" class="no-js lt-ie9" prefix="og: http://ogp.me/ns#" itemscope itemtype="http://schema.org/WebPage"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="{{ DEFAULT_LANG }}" class="no-js" prefix="og: http://ogp.me/ns#" itemscope itemtype="http://schema.org/WebPage"> <!--<![endif]-->
+{% else %}
+<!--[if lt IE 7]>      <html lang="{{ DEFAULT_LANG }}" class="no-js lt-ie9 lt-ie8 lt-ie7" prefix="og: http://ogp.me/ns#" itemscope itemtype="http://schema.org/Blog"> <![endif]-->
+<!--[if IE 7]>         <html lang="{{ DEFAULT_LANG }}" class="no-js lt-ie9 lt-ie8" prefix="og: http://ogp.me/ns#" itemscope itemtype="http://schema.org/Blog"> <![endif]-->
+<!--[if IE 8]>         <html lang="{{ DEFAULT_LANG }}" class="no-js lt-ie9" prefix="og: http://ogp.me/ns#" itemscope itemtype="http://schema.org/Blog"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="{{ DEFAULT_LANG }}" class="no-js" prefix="og: http://ogp.me/ns#" itemscope itemtype="http://schema.org/Blog"> <!--<![endif]-->
+{% endif %}
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{% block title %}{{ SITENAME }}{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="{% block description %}{{ DESCRIPTION }}{% endblock %}">
+    <link rel="shortcut icon" href="{{ SITEURL }}/{{ FAVICON }}" type="{{ FAVICON_TYPE }}">
+    <meta name="author" content="{{ AUTHOR }} - {{ SITEURL }}">
+    <meta name="copyright" content="{{ AUTHOR }}">
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@{{ TWITTER_USERNAME }}" />
+    <meta property="og:site_name" content="{{ SITENAME }}" />
+    {% block seo %}
+    <meta property="og:title" content="{{ SITENAME }}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="{{ SITEURL }}" />
+    <meta name="twitter:url" content="{{ SITEURL }}" />
+    <meta itemprop="name" content="{{ SITENAME }}" />
+    <meta itemprop="url" content="{{ SITEURL }}"/>
+    {% if DESCRIPTION %}
+    <meta property="og:description" content="{{ DESCRIPTION }}" />
+    <meta name="twitter:description" content="{{ DESCRIPTION }}" />
+    <meta itemprop="description" content="{{ DESCRIPTION  }}" />
+    {% endif %}
+    {% if META_IMAGE %}
+    <meta property="og:image" content="{{ META_IMAGE }}" />
+    <meta property="og:image:type" content="{{ META_IMAGE_TYPE }}" />
+    <meta name="twitter:image" content="{{ META_IMAGE }}" />
+    <meta itemprop="image" content="{{ META_IMAGE }}" />
+    {% endif %}
+    {% endblock %}
+    <script src="https://use.fonticons.com/1cb8db1c.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,700,700italic&subset=latin,greek' rel='stylesheet' type='text/css'>
+
+    <!-- Bootstrap & Custom CSS import  -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+
+    <!-- Font-awesome for icons -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+    <!-- Custom styles for this template -->
+    <link href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/custom.css" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Heading [Y]
+========================================================== -->
+
+  <div class="container">
+    <div class="jumbotron transparent">
+      <div class="row">
+        <div class="col-md-3">
+          <a href="{{ SITEURL }}/">
+            <img src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/img/me_round.png" alt="antonis manaras" class="img-circle img-center" width="160" height="160">
+            <!-- To Do: Make image addition dynamic-->
+          </a>
+        </div>
+        <div class="col-md-9">
+          <h1 class="blog-title">{{ SITENAME }}  <span class="icon icon-terminal blink"></span></h1>
+          <p class="lead blog-description">{{ SITESUBTITLE }}</p>
+        </div>
+      </div>
+     </div>
+<!--    <hr>-->
+    <!-- Nav [Y]
+    =============== -->
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <ul class="nav nav-pills nav-justified nav-border">
+              {% for title, link in MENUITEMS %}
+                  <li role="presentation"><a href="{{ link }}">{{ title }}</a></li>
+              {% endfor %}
+              {% if DISPLAY_PAGES_ON_MENU %}
+                  {% for p in pages %}
+                      <li role="presentation" {% if p == page %} class="active" {% endif %}><a href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a></li>
+                  {% endfor %}
+              {% else %}
+                  {% if DISPLAY_CATEGORIES_ON_MENU %}
+                      {% for cat, null in categories %}
+                          <li role="presentation" {% if cat == category %} class="active" {% endif %}><a href="{{ SITEURL }}/{{ cat.url }}">{{ cat }}</a></li>
+                      {% endfor %}
+                  {% endif %}
+              {% endif %}
+            </ul> <!--end Nav -->
+          </div>
+      </div>
+    </div>
+<!--    <hr>-->
+  </div> <!-- end Heading -->
+
+<!-- Main body []
+========================================================== -->
+  <div class="container">
+    <!-- Post list []
+    ======================= -->
+    <div class="blog-header">
+      <!-- To Do: Find a nice Articles' title -->
+    </div>
+    <div class="row">
+    {% block content %}
+    {% endblock %}
+
+    </div><!-- end row -->
+  </div> <!-- end container -->
+
+
+
+
+  <!-- Footer [Y]
+=========================================================== -->
+
+  <footer class="blog-footer">
+    <p>Antonis Manaras &#8226; 2015</p>
+    <p>
+      <a href="#">Back to top</a>
+    </p>
+  </footer><!-- end Footer -->
+
+
+<!-- Bootstrap core JavaScript
+============================================================ -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+  <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+  <script src="{{SITEURL}}/{{ THEME_STATIC_DIR }}/js/icon-blink.js"></script>
+
+</body>
+</html>
