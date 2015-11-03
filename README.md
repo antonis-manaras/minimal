@@ -1,5 +1,4 @@
 # Minimal
-------------
 
 Minimal is a template for [Pelican](http://docs.getpelican.com/en/3.6.3/). It is built with [Bootstrap](http://getbootstrap.com/) and it is meant to be a minimal, simple, non distractive blog and personal page.
 
