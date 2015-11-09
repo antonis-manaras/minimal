@@ -9,6 +9,7 @@ At the moment it is not very customizable, as some parts (e.g. picture) are hard
 ## Work to be done
 
 - [ ] Clean code, fix identation
+- [ ] Fix CSS for articles
 - [ ] Make picture dynamic
 - [ ] Improve menu
 - [ ] Rewrite parts of html code using `<article>` tags to improve article manipulation
